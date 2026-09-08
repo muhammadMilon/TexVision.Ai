@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #091726;
+  --color-ink2: #10283f;
+  --color-panel: #112e47;
+  --color-line: #29445d;
+  --color-mist: #dbe5e8;
+  --color-paper: #f5f2eb;
+  --color-teal: #19c6ad;
+  --color-teal2: #0d9488;
+  --color-amber: #f3ae43;
+  --color-danger: #ea6571;
+  --color-violet: #8d78eb;
+
+  --font-display: var(--font-space-grotesk), Manrope, ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-dm-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0a1623;
+  color: #e7eff4;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ---------- scrollbars ---------- */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: #0a1623; }
+::-webkit-scrollbar-thumb { background: #29445d; border-radius: 99px; border: 2px solid #0a1623; }
+::-webkit-scrollbar-thumb:hover { background: #3c6183; }
+
+/* ---------- shared utilities ---------- */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.glow-teal { box-shadow: 0 0 0 1px rgba(25, 198, 173, 0.25), 0 18px 50px -12px rgba(25, 198, 173, 0.35); }
+
+.text-balance { text-wrap: balance; }
+
+/* fabric texture used by the live inspection viewport */
+.fabric-weave {
+  background-image:
+    repeating-linear-gradient(0deg, #0d2231 0 5px, #122b3d 5px 7px),
+    repeating-linear-gradient(90deg, transparent 0 14px, rgba(88, 151, 178, 0.22) 14px 15px);
+}
+
+@keyframes scan-sweep {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+.animate-sweep { animation: scan-sweep 3.2s linear infinite; }
+
+@keyframes fabric-roll {
+  from { background-position-y: 0; }
+  to { background-position-y: 140px; }
+}
+.animate-roll { animation: fabric-roll 2.4s linear infinite; }
+
+@keyframes soft-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+.animate-soft-pulse { animation: soft-pulse 1.8s ease-in-out infinite; }
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 38s linear infinite; }
+
+/* recharts polish */
+.recharts-cartesian-axis-tick text { fill: #7f95a7; font-size: 11px; }
+.recharts-cartesian-grid line { stroke: rgba(255,255,255,0.06); }
+.recharts-default-legend { font-size: 12px; }
